@@ -1,0 +1,34 @@
+<script>
+const clients = [
+    {
+        name: "Jim",
+        company: "Acme",
+        sales: 10000
+    },
+    {
+        name: "Wei",
+        company: "Software Co",
+        sales: 2000
+    },
+    {
+        name: "Ram",
+        company: "Trucking Co",
+        sales: 120000
+    },
+    {
+        name: "Jose",
+        company: "Widgets",
+        sales: 25000
+    }
+
+]
+
+clients[25] = {
+    sales: 1
+}
+clients.sort((a,b)=>a.sales - b.sales)
+const copyClients = clients.toSorted((a,b)=>a.sales - b.sales)
+console.log(clients)
+console.log(copyClients)
+
+</script>
