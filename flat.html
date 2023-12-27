@@ -1,0 +1,50 @@
+<script>
+
+    const array1 = [
+        1,
+        2,
+        3,
+        [
+            4,
+            5,
+            [
+                6,
+                7,
+                8
+            ]
+        ],
+        9
+    ]
+    // flat takes an optional param of depth
+    //default is 1
+    const flatArray = array1.flat(1)
+    console.log(array1)
+    console.log(flatArray)
+    
+    const array2 = [
+        1,2,3,[4,5]
+    ]
+    
+    array2[9] = 9
+    console.log(array2.flat())
+    
+    const array3 = [
+        1,
+        "Hello",
+        {
+            name: "Jim",
+            age: 30,
+            langauges: [
+                "JavaScript",
+                "Python"
+            ]
+        },
+        [3,4,5],
+        ,
+        ,
+        true
+    ]
+    
+    const array3Flat = array3.flat(Infinity)
+    console.log(array3Flat)
+    </script>
