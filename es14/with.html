@@ -1,0 +1,18 @@
+<script>
+
+const origMessages = []
+origMessages.push("Hello")
+origMessages.push("Hi")
+origMessages.push("My name is Ron")
+origMessages.push("My name is Harold")
+origMessages[10] = "New messages"
+
+// const messages = [...origMessages]
+// const messages = origMessages.slice()
+// messages[2] = "My name is Rob"
+// origMessages.splice(2,1,"My name is Rob") //this will mutate origMessages in place
+const messages = origMessages.with(2,"My name is Rob") //this will return a new array with the change
+console.log(origMessages)
+console.log(messages)
+
+</script>
