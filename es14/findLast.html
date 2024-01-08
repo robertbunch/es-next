@@ -1,0 +1,32 @@
+<script>
+
+sockets = [
+    {
+        id: 1,
+        name: "Jim",
+    },
+    {
+        id:2,
+        name: "Pavan",
+    },
+    {
+        id:3,
+        name: "Qua"
+    },
+    {
+        id:4,
+        name: "Pavan"
+    },    
+]
+
+sockets[10000] = {
+    id: 10000,
+    name: "Eddie"
+}
+console.log(sockets.flat())
+foundSocket = sockets.flat().findLastIndex(s=>s.name == "Pavan")
+console.log(foundSocket)
+
+
+
+</script>
