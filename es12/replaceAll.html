@@ -1,0 +1,17 @@
+<script>
+
+const mispelled = "I always mispell teh word teh because teh h key sticks on my keyboard"
+const fixed = mispelled.replaceAll('teh','the')
+console.log(mispelled)
+console.log(fixed)
+
+const privateData = "My SSN is 123-45-6789, an exmaple is 123-11-6789. My SSN again is 123-45-6789. It's 123-45-6789"
+const safeData = privateData.replaceAll(/\d{3}-\d{2}-\d{4}/g,(match,index)=>{
+    if(match === "123-11-6789"){
+        return match
+    }
+    return '###'
+})
+console.log(safeData)
+
+</script>
