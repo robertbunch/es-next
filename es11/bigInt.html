@@ -1,0 +1,34 @@
+<script>
+
+const bigNumJS = 2 ** 53 - 1
+console.log(bigNumJS)
+// console.log(bigNumJS + 2)
+
+const bigNumBI = BigInt(bigNumJS)
+console.log(bigNumBI)
+// console.log(bigNumBI + 2) //cannot mix data types
+console.log(bigNumBI + 2n)
+console.log(bigNumBI === bigNumJS) //false, dif data types!
+// console.log("3" === 3)
+
+const mixed = [1,6n,-9,1000n,23,45,1n]
+mixed.sort()
+console.log(mixed)
+mixed.sort((a, b) => (
+    a < b ? -1 : 
+    a > b ? 1 : 
+    0
+));
+console.log(mixed)
+
+let hundredFact = 1n
+for(let i = 100n; i > 0; i--){
+    hundredFact *= i
+}
+// console.log(hundredFact)
+sum = 0n
+for(let char of hundredFact.toString()){
+    sum += BigInt(char)
+}
+console.log(sum)
+</script>
