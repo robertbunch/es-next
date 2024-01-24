@@ -1,0 +1,41 @@
+<script>
+const users = [
+{
+    name: "Rob",
+    address: {
+        city: "Atlanta",
+        state: null,
+        zip: null
+    },
+    password: "somehash"
+},
+{
+    name: "Akash",
+    password: "someHash"
+}
+]
+//Optional Chain Operator is awesome! It will keep our code
+// from breaking by short-circuiting if the thing it's on
+// is nullish (null of undefined)
+users.forEach(u=>{
+    // console.log(u.address.city) //will break!
+    // console.log(u.address ? u.address.city : "")
+    
+    console.log(u.address?.city)
+    if(u.address?.city === "Atlanta"){
+        console.log("Hello, Atlanta users")
+    }
+    u.array?.[1]
+    console.log(u.address?.state?.[0])
+    const city = u.address?.city ?? "Unknown City"
+    console.log(city)
+    u.getName?.() //before the ()
+    // u.password?.() //will break because password is not nullish
+    // if(u.address){ //checks for falsy, NOT nullish
+    //     if(u.address.city === "Atlanta"){
+    //         console.log("Hello, Atlanta users")
+    //     }
+    // }
+})
+
+</script>
