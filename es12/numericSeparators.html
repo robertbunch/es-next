@@ -1,0 +1,16 @@
+<script>
+
+    const num = 1_000_000_000n
+    console.log(num + 100n)
+
+// PER MDN at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#literals:
+// More than one underscore in a row is not allowed
+100__000; // SyntaxError
+
+// Not allowed at the end of numeric literals
+100_; // SyntaxError
+
+// Can not be used after leading 0
+0_1; // SyntaxError
+
+</script>

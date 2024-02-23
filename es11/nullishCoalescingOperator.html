@@ -1,0 +1,39 @@
+<script>
+    // Nullish coalescing operator = ??
+    // ?? Short-circuits the code. If the left side is not nullish
+    // it will NOT run
+    const customer1 = {
+        name: "Akash",
+        credits: 0, //credits are internal currency
+        bio: "", //been set, then unset
+    }
+
+    const name = customer1.name || "New Customer"
+    // || checks for falsy values, and we want (in this case) nullish
+    // const credits = customer1.credits || 10 //initialize creidts at 10 for new customer
+    // const bio = customer1.bio || "This is a new customer. Please fill out bio" //incentivize the customer to fill out the bio
+
+    const credits = customer1.credits ?? 10 //initialize creidts at 10 for new customer
+    const bio = customer1.bio ?? "This is a new customer. Please fill out bio" //incentivize the customer to fill out the bio
+
+    console.log(name)
+    console.log(credits)
+    console.log(bio)
+
+    const contactPhone = customer1.contact?.phone ?? "No Phone"
+    console.log(contactPhone)
+
+    function one(){
+        console.log("I ran, number one")
+        return true
+    }
+
+    function two(){
+        console.log("I ran, number two")
+        return true
+    }
+    //if one() returns nullish, 
+    //then and only then two will run
+    one() ?? two() 
+
+</script>
