@@ -1,0 +1,14 @@
+<script>
+
+const aString = "12 4 543 sd fdg 234 sdf asdf 34"
+// the d option is NOT the same thing as \d
+// it is an option and does NOT change the pattern itself
+// it is part of the regex, just not the pattern
+const res = aString.match(/\d/) // \d = digit
+//the d option return value will behave differently depending on the method
+console.log(res)
+
+const res2 = /\d{3}/gd.exec(aString)
+console.log(res2)
+
+</script>

@@ -1,0 +1,16 @@
+<script>
+
+// this at the top level (not in a function, etc)
+// in the browser is always going to be the window
+console.log(this)
+console.log(window)
+console.log(self)
+console.log(frames)
+console.log(Math.random())
+console.log(this.Math.random())
+console.log(globalThis.Math.random())
+const worker1 = new Worker('globalThisWorker.js')
+
+
+
+</script> 
