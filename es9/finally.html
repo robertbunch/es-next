@@ -1,0 +1,36 @@
+
+<style>
+    input{
+        font-size: 24px;
+        padding: 200px;
+        background-color: green;
+    }
+</style>
+
+<input type="button" id="b1" value="start1"/>
+
+<script>
+
+    const aPromise = new Promise((resolve, reject)=>{
+        //resolve means the "right" thing happened, here's your data
+            //the then method will run
+        //reject means something went wrong. 
+            // catch method will run 
+        const timer = setTimeout(()=>{
+            reject("Timer ran out. Reject!")
+        },3000)
+        document.getElementById('b1').addEventListener('click',()=>{
+            clearTimeout(timer) //dont run the callback in the timeout because we resolved
+            resolve("Timer stopped! Resolved!")
+        })
+    })
+
+    aPromise.then(r=>{
+        console.log(r,"Resolved ran!")
+    }).catch(r=>{
+        console.log(r,"Reject ran")
+    }).finally(()=>{
+        console.log("Promise settled.")
+    })
+
+</script>
