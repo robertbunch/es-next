@@ -1,0 +1,49 @@
+
+<style>
+    input{
+        font-size: 24px;
+        padding: 200px;
+        background-color: green;
+    }
+</style>
+
+<input type="button" id="b1" value="start1"/>
+<input type="button" id="b2" value="start2"/>
+
+<script>
+
+const run = async()=>{
+    const startTimer = buttonDomEl => new Promise((resolve, reject)=>{
+        const timer = setTimeout(()=>{
+            console.log(buttonDomEl,"Timer has expired.")
+            reject(buttonDomEl)
+        },3000)
+        document.getElementById(buttonDomEl).addEventListener('click',()=>{
+            clearTimeout(timer)
+            console.log(buttonDomEl,"Timer has completed")
+            resolve(buttonDomEl)
+        })
+    })
+
+    const timerPromises =[
+        startTimer('b1'),
+        startTimer('b2'),
+    ]
+
+    //.all will run ONLY when all promises resolve
+    // if ANY reject, it will throw an error
+    // await Promise.all(timerPromises)
+    // allSettled will run when all promises are resolved
+    // OR rejected.
+    const results = await Promise.allSettled(timerPromises)
+    console.log(results)
+
+    // this next thing happens after both button timers
+    // are complete
+    console.log("Buttons are done!")
+
+}
+
+run()
+
+</script>

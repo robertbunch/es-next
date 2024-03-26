@@ -1,0 +1,64 @@
+
+<style>
+    input{
+        font-size: 24px;
+        padding: 200px;
+        background-color: green;
+    }
+</style>
+
+<input type="button" id="b1" value="start1"/>
+<input type="button" id="b2" value="start2"/>
+<input type="button" id="b3" value="start3"/>
+
+<script>
+
+const run = async()=>{
+    const startTimer = buttonDomEl => new Promise((resolve, reject)=>{
+        const timer = setTimeout(()=>{
+            console.log(buttonDomEl,"Timer has expired.")
+            reject(buttonDomEl)
+        },3000)
+        document.getElementById(buttonDomEl).addEventListener('click',()=>{
+            clearTimeout(timer)
+            console.log(buttonDomEl,"Timer has completed")
+            resolve(buttonDomEl)
+        })
+    })
+
+    const timerPromises =[
+        startTimer('b1'),
+        startTimer('b2'),
+        startTimer('b3'),
+    ]
+
+    //all takes an array of promises and ALL must fulfill
+    // and it will return the value of all promise resolves
+    // const resp = await Promise.all(timerPromises)
+    // console.log(resp)
+
+    // Use case: reject on setTimeout so that if fetch
+    // takes too long, you can stop, otherwise return the data
+    // race all takes an array of promises but short-circuits
+    // when ANY promises resolves or rejects
+    // Promise.race(timerPromises).then(r=>{
+    //     console.log(r,"resolved")
+    // }).catch(r=>{
+    //     console.log(r,"rejected")
+    // })
+
+    // race all takes an array of promises but short-circuits
+    // when ANY promises resolves
+    // USE CASE: needed some redundancy
+    // We need speed, and we don't care about rejects
+    Promise.any(timerPromises).then(r=>{
+        console.log(r,"resolved")
+    }).catch(r=>{
+        console.log(r,"rejected")
+    })
+
+}
+
+run()
+
+</script>
