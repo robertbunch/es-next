@@ -1,0 +1,45 @@
+<style>
+    input{
+        font-size: 24px;
+        padding: 200px;
+        background-color: green;
+    }
+</style>
+
+<input type="button" id="b1" value="start1"/>
+
+<script>
+
+const run = async()=>{
+
+    // let resolve
+    // let reject
+
+    // const aPromise = new Promise((res, rej)=>{
+    //     resolve = res
+    //     reject = rej
+    // })
+
+    //withResolvers elimnates another tab! That is good.
+    // it puts resolve and reject in the same scope as the promise
+    // so that we can run them whenever we want, not inside
+    // of the callback/executer, or use some ridiculous let code
+    const { promise, resolve, reject } = Promise.withResolvers()
+
+    document.getElementById('b1').addEventListener('click',()=>{
+        resolve("Button clicked!")
+    })
+
+    setTimeout(()=>{
+        resolve("2 seconds has passed")
+    },2000)
+
+    // const data = await aPromise
+    const data = await promise
+    console.log(data)
+
+}
+
+run()
+
+</script>
