@@ -1,0 +1,87 @@
+<script>
+const run = async()=>{
+    // 1. Use async/await
+        // 1. JS be JS, and let humans write human code
+        // 2. Eliminates a callback (tab)!!
+    // let res
+    // const promise = new Promise((resolve, reject)=>{
+        // res = resolve
+        // async
+    //     setTimeout(()=>{
+    //         resolve("done")
+    //     },1000)
+    // })
+
+    // const data = await promise
+    // console.log(data)
+
+    // promise.then(data=>{
+    //     console.log(data)
+    //     // other stuff that happens after promise resolves
+    // })
+
+    // 2. use withResolvers() - NEW!
+        // 1. Eliminate another callback (tab)!
+        // 2. resolve and reject are at the same scope as promise
+    const { promise, resolve, reject } = Promise.withResolvers()
+    // const promise = new Promise((resolve, reject)=>{
+    // async
+    setTimeout(()=>{
+        resolve("done")
+    },1000)
+    const data = await promise
+    console.log(data)
+
+    // 3. Await + promise.all() + destructuring = MAGIC
+    // Promise.all() takes an array of promises. It returns a 
+    // promise that resolves when all the promises in the array do
+    const p1 = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("done1")
+        },2000)
+    })    
+    const p2 = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("done2")
+        },1000)
+    })    
+    // we have some code that runs AFTER p1 and p2 are BOTH resolves
+    const [data1, data2] = await Promise.all([p1,p2])
+    console.log(data1, data2)
+    // .then(data=>{
+    //     // data is an array that has the data from the promises
+    //     console.log(data[0]) //p1 resolve
+    //     console.log(data[1]) //p2 resolve
+    // })
+
+    // 4. Know the difference between fulfilled/rejected and settled
+
+    // 5. Eliminate the {} on functions
+    const asyncFunction = ()=>new Promise((resolve, reject)=>{
+        //all the code is at one level
+    })
+
+
+}
+
+run()
+
+
+function a(){
+    //data came async
+    (data)=>{
+        //
+        //
+        //
+        (data2)=>{
+           //
+           //
+           //
+           (data3)=>{
+
+           } 
+        }
+    }
+}
+</script>
+

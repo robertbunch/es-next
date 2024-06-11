@@ -1,0 +1,42 @@
+<script>
+const clients = [
+    {
+        name: "Jim",
+        company: "Acme",
+        sales: 10000,
+        salesRep: "Noah"
+    },
+    {
+        name: "Wei",
+        company: "Software Co",
+        sales: 2000,
+    },
+    {
+        name: "Ram",
+        company: "Trucking Co",
+        sales: 120000,
+        salesRep: null
+    },
+    {
+        name: "Jose",
+        company: "Widgets",
+        salesRep: "Ashad"
+    }
+]
+
+clients.forEach(c=>{
+    // if(c.salesRep){ //truthy value
+    // use case 1: we need better than truthy/falsy check
+    if(Object.hasOwn(c,'salesRep')){
+        console.log(`${c.name} has rep: ${c.salesRep}`)
+    }
+    console.log(c.toString())
+    // use case 2: does this property belong to THIS object as own
+    if(Object.hasOwn(c,'toString')){
+        console.log("Has to string and is own")
+    }else{
+        console.log("may have to string but isn't own")
+    }
+})
+
+</script>
