@@ -1,0 +1,58 @@
+
+<script>
+
+// var = is the old school way to declare a var
+// JavaScript is going to write the next line without 
+// asking us, because it hoists variables
+// var x = undefined
+console.log(x) //undefined
+console.log(x + 3) //NaN, undefined + 3
+var x = 3
+console.log(x + 3) //6
+
+function scoped(){
+    // var x = undefined, gets put at the top of the 
+    // function (scope)
+    console.log(x) //expect x = 3?
+    var x = 4 //this will hoist in the function
+    // x = 4 //this will use the global var (as long as 
+    // we don't have a new var in this function)
+    console.log(x)
+}
+scoped()
+
+// let/const = new school way to declare var
+// JavaScript will hoist the declaration but NOT initialize it
+// unlike var, which is undefined
+// console.log(y)
+// console.log(y + 3)
+// let y = 3
+// console.log(y)
+
+// console.log(y)
+// console.log(y + 3)
+// const y = 3
+// console.log(y)
+
+// functions
+// JavaScript hoists the ENTIRE function to the top of scope
+run()
+function run(){
+    console.log("Run ran")
+}
+
+// function expressions, a function in a let/const/var
+// the variable gets hoisted, the function does not
+// const runMe
+// runMe()
+// const runMe = ()=>{
+//     console.log("Run Me, ran")
+// }
+
+// var runMe = undefined
+// runMe()
+// var runMe = function(){
+//     console.log("RunMe Ran!")
+// }
+
+</script>
